@@ -1,0 +1,17 @@
+{
+  "title": "Primeiro fluxo RayzerX",
+  "description": "Criar uma base inicial para transformar exemplos de agentes em um fluxo de empresa de software: planejar, pesquisar, testar, revisar e documentar.",
+  "requested_by": "Rodolpho Carvalho",
+  "acceptance_criteria": [
+    "Executar localmente sem chamadas pagas de IA",
+    "Gerar relatório estruturado",
+    "Mapear quais agentes do catálogo entram primeiro",
+    "Apontar bloqueios antes de produção"
+  ],
+  "constraints": [
+    "Preservar licença MIT e atribuição upstream",
+    "Não executar código gerado por modelo sem sandbox",
+    "Não usar credenciais de produção",
+    "Não fazer deploy automático"
+  ]
+}
