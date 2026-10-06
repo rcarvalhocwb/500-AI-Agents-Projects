@@ -1,0 +1,28 @@
+# Node / web build artifacts
+node_modules/
+web/node_modules/
+dist/
+web/dist/
+
+# Python local environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# OS / editor noise
+.DS_Store
+.idea/
+.vscode/
+
+# Local reports and temporary outputs
+tmp/
+*.log
