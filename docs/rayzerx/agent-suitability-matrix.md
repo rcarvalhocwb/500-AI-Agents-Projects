@@ -11,7 +11,7 @@ Legend:
 | Agent | RayzerX role | Decision | Main blocker before production |
 | --- | --- | --- | --- |
 | `01-web-research-agent` | Research | Adapt later | Dependency conflict around LangGraph/LangChain versions; needs source/audit policy |
-| `02-code-review-agent` | Reviewer | Keep now | Needs model gateway, structured findings, and deterministic tests |
+| `02-code-review-agent` | Reviewer | Keep now | Preserve existing dynamics; add structured findings, usage tracking, and deterministic tests |
 | `03-pdf-qa-agent` | Knowledge/RAG | Adapt later | Needs persistent isolated indexes per tenant/project |
 | `04-sql-database-agent` | Data tool | Adapt later | Must keep read-only defaults and never expose core DB credentials |
 | `05-email-drafting-agent` | Communications | Defer | External email workflows need recipient approval and send boundaries |
@@ -42,7 +42,7 @@ Start with these five adapters:
 4. `19-competitive-analysis-agent`
 5. `20-multi-agent-debate`
 
-They map directly to the RayzerX build loop: review, test, document, research, and decide.
+They map directly to the RayzerX build loop while preserving the source project's working dynamics: review, test, document, research, and decide.
 
 ## First exclusion rule
 

@@ -1,14 +1,15 @@
 # RayzerX contracts
 
-These contracts define the first stable boundary for adapting demo agents into a RayzerX build flow. They are intentionally small so the first vertical slice can run locally before paid model calls, cloud state, or production deployment are added.
+These contracts define the first stable boundary for fitting RayzerX around the existing agent-catalog flow. They are intentionally small so the first vertical slice can run locally before production credentials, cloud state, or deployment are added.
 
 ## Design rules
 
 - Every run must be traceable by organization, project, run, and correlation identifiers.
 - Every agent must receive an explicit capability scope.
 - Every result must report status, artifacts, findings, decisions, and usage.
-- Model/provider calls are not allowed until the provider gateway and budget controls exist.
-- Agents may not write outside approved project paths.
+- Model/provider choice may be automatic when the orchestrator policy allows it.
+- Model usage must be observable, auditable, and budget-aware.
+- Agents may not write outside approved project paths unless a capability explicitly allows it.
 
 ## Core records
 
@@ -20,7 +21,7 @@ These contracts define the first stable boundary for adapting demo agents into a
 | `AgentRunResult` | Returns structured output from an agent adapter. |
 | `ArtifactRef` | Points to a file, URL, report, diff, or generated asset. |
 | `ReviewFinding` | Records reviewer/tester findings with severity and location. |
-| `UsageRecord` | Records provider/runtime usage. First slice only records local runtime usage. |
+| `UsageRecord` | Records provider/runtime usage, including automatic model/provider selection. First slice only records local runtime usage because no production credentials were configured. |
 | `DecisionRecord` | Captures structured decisions and why they were made. |
 
 ## Status values
@@ -54,4 +55,4 @@ The first runnable flow accepts a task brief and produces:
 - documentation handoff
 - final run report
 
-No external model call is performed in this phase.
+No external model call is performed in this local bootstrap phase. This is an environment/budget constraint, not a RayzerX product restriction.

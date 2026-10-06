@@ -7,12 +7,12 @@ from rayzerx.orchestrator import run_first_flow
 
 
 class RayzerXFlowTest(unittest.TestCase):
-    def test_first_flow_runs_without_provider_calls(self) -> None:
+    def test_first_flow_runs_without_production_credentials(self) -> None:
         task = TaskBrief(
             title="Bootstrap",
             description="Run the first RayzerX flow.",
             requested_by="test",
-            acceptance_criteria=["No paid model calls", "Structured report"],
+            acceptance_criteria=["No production credentials", "Structured report"],
         )
 
         with TemporaryDirectory() as temp_dir:

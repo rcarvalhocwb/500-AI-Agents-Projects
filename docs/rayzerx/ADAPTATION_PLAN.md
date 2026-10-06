@@ -1,10 +1,10 @@
-# RayzerX adaptation plan
+# RayzerX upstream-first integration plan
 
 ## Goal
 
-Turn this MIT-licensed agent catalog into a RayzerX-compatible starting point: a controlled software-company workflow that can plan, build, test, review, document, and report.
+Turn this MIT-licensed agent catalog into a RayzerX-compatible starting point by fitting RayzerX around the project’s already validated dynamics: plan, build, test, review, document, and report.
 
-This repository should be treated as the reusable agent-pattern inventory. The RayzerX product layer should add orchestration, contracts, governance, deployment controls, and persistence on top.
+This repository should be treated as the reusable agent-pattern inventory and operational reference. The RayzerX product layer should add orchestration, context, memory, governance, model autonomy, deployment controls, and persistence on top.
 
 ## Phase 0 — Repository hygiene
 
@@ -44,9 +44,9 @@ Initial defer/exclude candidates:
 - `13-customer-support-agent` until tenant-safe memory and real ticket escalation exist.
 - `21-pii-sanitization-agent` until external privacy boundary is approved.
 
-## Phase 2 — RayzerX contracts
+## Phase 2 — RayzerX contracts around the existing flow
 
-Define minimal contracts before adapting code:
+Define minimal contracts before wrapping or extending code:
 
 - `TaskBrief`
 - `AgentRunRequest`
@@ -58,17 +58,18 @@ Define minimal contracts before adapting code:
 
 Each contract should include organization/project/run identifiers, correlation ID, actor, deadline, idempotency key, and capability scope.
 
-## Phase 3 — Provider gateway
+## Phase 3 — Model autonomy controller
 
-Replace direct provider calls with a single adapter boundary:
+Add a controller that lets the orchestrator choose, switch, and call IA providers automatically while preserving traceability:
 
-- Model routing by task type.
+- Model routing by task type, agent role, cost, quality, latency, and availability.
 - API key lookup through secret broker.
 - Usage ledger per run.
 - Budget fail-closed behavior.
 - Provider-independent request/response shape.
+- Audit trail showing which IA was selected and why.
 
-No adapted agent should instantiate provider clients directly.
+Direct provider calls are not automatically forbidden. They must be either wrapped, observed, or approved by policy so RayzerX can track usage, cost, and outcomes without breaking useful existing dynamics.
 
 ## Phase 4 — First runnable vertical slice
 
@@ -86,7 +87,7 @@ Acceptance:
 
 - A sample task produces a structured run report.
 - The build/test command is deterministic and auditable.
-- No model call happens without budget configuration.
+- Model/provider switching is recorded and budget-aware.
 
 ## Phase 5 — Production hardening
 

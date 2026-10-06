@@ -1,7 +1,8 @@
 """Deterministic first RayzerX flow.
 
-This is deliberately provider-free. It proves the flow and contracts before
-we wire in paid model calls or adapted agent implementations.
+This local bootstrap is provider-free because no production credentials or
+budget policy are configured in this environment. RayzerX product direction
+allows autonomous model/provider selection by the orchestrator.
 """
 
 from __future__ import annotations
@@ -84,9 +85,9 @@ def _local_usage(note: str) -> list[UsageRecord]:
 
 def _planner(task: TaskBrief) -> AgentRunResult:
     steps = [
-        "Lock the contracts before adapting demo agents.",
-        "Adapt only the first safe agent set.",
-        "Keep model calls behind a future provider gateway.",
+        "Lock contracts around the existing validated agent dynamics.",
+        "Wrap the first safe source-agent set before rewriting internals.",
+        "Allow model/provider autonomy when policy and budget are configured.",
         "Add sandboxing before generated code execution.",
         "Produce a human-readable handoff after each run.",
     ]
@@ -96,10 +97,10 @@ def _planner(task: TaskBrief) -> AgentRunResult:
         summary="Plano inicial criado: " + " ".join(steps),
         decisions=[
             DecisionRecord(
-                title="Start with a provider-free flow",
-                decision="Run the first RayzerX flow locally with deterministic adapters.",
-                rationale="This validates structure and gates without spending budget or risking credentials.",
-                impact="Model-backed behavior will be added behind a gateway after contracts are stable.",
+                title="Use upstream-first integration",
+                decision="Fit RayzerX around the source project's validated dynamics before replacing internals.",
+                rationale="The existing project is already operational; RayzerX should add orchestration, audit, memory, and product experience around it.",
+                impact="Model autonomy remains a core orchestrator capability and will be governed rather than blocked.",
             )
         ],
         usage=_local_usage("Planning used deterministic rules only."),
@@ -131,8 +132,8 @@ def _tester(task: TaskBrief) -> AgentRunResult:
         agent_role="tester",
         status="passed",
         summary=(
-            "Check local concluído: este fluxo não executa código gerado por modelo, "
-            "não usa credenciais e não faz deploy."
+            "Check local concluído: este bootstrap não depende de credenciais de produção, "
+            "não executa código gerado por modelo e não faz deploy."
         ),
         findings=[
             ReviewFinding(
@@ -149,12 +150,12 @@ def _reviewer(task: TaskBrief) -> AgentRunResult:
     return AgentRunResult(
         agent_role="reviewer",
         status="passed",
-        summary="Nenhum bloqueio para a fase bootstrap. Bloqueios de produção permanecem registrados.",
+        summary="Nenhum bloqueio para a fase bootstrap. A autonomia de IA foi registrada como requisito central.",
         findings=[
             ReviewFinding(
-                severity="medium",
-                message="Provider gateway is not implemented yet.",
-                recommendation="Do not wire direct OpenAI, Anthropic, or third-party SDK calls into RayzerX agents.",
+                severity="info",
+                message="Model autonomy controller is not implemented yet.",
+                recommendation="Allow model/provider switching in product design, but record provider, model, reason, cost, and outcome per run.",
             ),
             ReviewFinding(
                 severity="medium",
@@ -175,12 +176,12 @@ def _documenter(task: TaskBrief, output_dir: Path) -> AgentRunResult:
                 "",
                 f"Task: {task.title}",
                 "",
-                "Status: bootstrap flow executed locally without paid model calls.",
+                "Status: bootstrap flow executed locally without production IA credentials.",
                 "",
                 "Next implementation step:",
                 "",
-                "1. Add the provider gateway contract.",
-                "2. Adapt `02-code-review-agent` behind the new contracts.",
+                "1. Add the model autonomy controller contract.",
+                "2. Wrap `02-code-review-agent` while preserving its existing dynamics.",
                 "3. Add tests for structured review findings.",
             ]
         )
